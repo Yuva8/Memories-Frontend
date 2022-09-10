@@ -1,0 +1,7 @@
+@media only screen and (max-width: 450px) {
+  .Heading {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+  }
+}

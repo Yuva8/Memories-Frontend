@@ -1,0 +1,38 @@
+.main {
+  min-height: 93vh;
+  display: flex;
+  /* align-items: center; */
+  background-image: url("./bg10.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.title {
+  font-size: 32px;
+  text-align: right;
+  color: white;
+  padding-top: 40px;
+  font-style: italic;
+}
+.subtitle {
+  font-size: 22px;
+  padding-top: 10px;
+  text-align: right;
+  color: white;
+  padding-top: 30px;
+  font-style: italic;
+}
+.buttonContainer {
+  margin-top: 50px;
+  text-align: right;
+  padding-right: 100px;
+}
+/* .profileContainer {
+  display: flex;
+  margin: 20px;
+} */
+
+/* @media only screen and (max-width: 768px) {
+  .profileContainer {
+    flex-direction: column-reverse;
+  }
+} */

@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import Auth from "./components/Auth";
+import Memories from "./components/Memories";
+import Usermemories from "./components/Usermemories";
+import MemoriesDetail from "./components/MemoriesDetail";
+import AddMemories from "./components/Addmemories";
+import Dashboard from "./components/Dashboard";
+import { useSelector } from "react-redux";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  console.log(isLoggedIn);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <Header />
       </header>
+      <main>
+        <Routes>
+          {!isLoggedIn ? (
+            <>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/auth" element={<Auth />} />
+            </>
+          ) : (
+            <>
+              <Route path="/memories" element={<Memories />} />
+              <Route path="/memories/add" element={<AddMemories />} />
+              <Route path="/usermemories" element={<Usermemories />} />
+              <Route path="/mymemories/:id" element={<MemoriesDetail />} />
+            </>
+          )}
+        </Routes>
+      </main>
     </div>
   );
 }
