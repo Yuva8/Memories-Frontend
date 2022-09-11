@@ -1,7 +1,12 @@
 @media only screen and (max-width: 450px) {
   .Heading {
     text-align: right;
-
+    width: 200px;
+    height: 100px;
     font-size: 10px;
+  }
+  .Image {
+    width: 240px;
+    height: 100px;
   }
 }

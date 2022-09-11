@@ -13,12 +13,15 @@ const MemoriesDetail = () => {
   const id = useParams().id;
   console.log(id);
   const [inputs, setInputs] = useState({});
+  const [image, setImage] = useState("");
+
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+
   const fetchDetails = async () => {
     const res = await axios
       .get(`https://memoriesapp-yuvi.herokuapp.com/api/memories/${id}`)
@@ -26,22 +29,47 @@ const MemoriesDetail = () => {
     const data = await res.data;
     return data;
   };
+
   useEffect(() => {
     fetchDetails().then((data) => {
       setBlog(data.memories);
       setInputs({
         title: data.memories.title,
         description: data.memories.description,
-        image: data.memories.image,
+        // image: data.memories.image,
       });
     });
   }, [id]);
+
+  const postDetails = (images) => {
+    if (images.type === "image/jpeg" || images.type === "image/png") {
+      const data = new FormData();
+      data.append("file", images);
+      data.append("upload_preset", "memories");
+      data.append("cloud_name", "deoatleff");
+      fetch("https://api.cloudinary.com/v1_1/deoatleff/image/upload", {
+        method: "put",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setImage(data.url.toString());
+          console.log(image);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return "Please Select an Image";
+    }
+  };
+
   const sendRequest = async () => {
     const res = await axios
       .put(`https://memoriesapp-yuvi.herokuapp.com/api/memories/update/${id}`, {
         title: inputs.title,
         description: inputs.description,
-        image: inputs.image,
+        image: image,
       })
       .catch((err) => console.log(err));
 
@@ -98,13 +126,24 @@ const MemoriesDetail = () => {
               margin="auto"
               variant="outlined"
             />
-            <InputLabel sx={labelStyles}>Image</InputLabel>
+            {/* <InputLabel sx={labelStyles}>Image</InputLabel>
             <TextField
               name="image"
               margin="auto"
               variant="outlined"
               onChange={handleChange}
               value={inputs.image}
+            /> */}
+            <InputLabel sx={labelStyles}>Image</InputLabel>
+            <TextField
+              name="image"
+              type="file"
+              id="custom-file"
+              margin="auto"
+              className="Image"
+              // onChange={(e) => setImage(e.target.value)}
+
+              onChange={(e) => postDetails(e.target.files[0])}
             />
             <Button
               sx={{ mt: 2, borderRadius: 4 }}

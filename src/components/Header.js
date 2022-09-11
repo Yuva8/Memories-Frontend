@@ -59,9 +59,6 @@ const Header = () => {
                 <NavLink className="nav-item nav-link" to="/auth">
                   Login
                 </NavLink>
-                <NavLink className="nav-item nav-link" to="/auth">
-                  Sign Up
-                </NavLink>
               </React.Fragment>
             )}
           </div>

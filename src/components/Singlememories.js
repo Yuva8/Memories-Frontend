@@ -36,9 +36,9 @@ const singlememories = ({
     return data;
   };
   const handleDelete = () => {
-    deleteRequest().then(() => navigate("/memories"));
+    deleteRequest().then(() => navigate("/memories/add"));
   };
-  console.log(createdAt);
+
   return (
     <div className="profileContainer">
       <Card
@@ -89,6 +89,11 @@ const singlememories = ({
           image={image}
           alt="Paella dish"
           className="landingimg"
+          style={{
+            alignItems: "center",
+
+            height: "100%",
+          }}
         />
         <br />
         <CardContent>
