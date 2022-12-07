@@ -30,7 +30,7 @@ const singlememories = ({
   };
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`https://memoriesapp-yuvi.herokuapp.com/api/memories/${id}`)
+      .delete(`https://memoriesapp-backend.onrender.com/api/memories/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
