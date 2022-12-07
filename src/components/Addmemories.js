@@ -13,7 +13,7 @@ const Addmemories = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .post("https://memoriesapp-yuvi.herokuapp.com/api/memories/create", {
+      .post("https://memoriesapp-backend.onrender.com/api/memories/create", {
         title: title,
         description: description,
         image: image,
