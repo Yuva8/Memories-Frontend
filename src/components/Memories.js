@@ -6,7 +6,7 @@ const Memories = () => {
   const [memories, setMemories] = useState();
   const sendRequest = async () => {
     const res = await axios
-      .get("https://memoriesapp-yuvi.herokuapp.com/api/memories")
+      .get("https://memoriesapp-backend.onrender.com/api/memories")
       .catch((err) => console.error(err));
     const data = await res.data;
     return data;
