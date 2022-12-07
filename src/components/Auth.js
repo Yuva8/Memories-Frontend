@@ -13,7 +13,7 @@ const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
   const sendReq = async (type = "login") => {
     const res = await axios
-      .post(`https://memoriesapp-yuvi.herokuapp.com/api/user/${type}`, {
+      .post(`https://memoriesapp-backend.onrender.com/api/user/${type}`, {
         name: name,
         email: email,
         password: password,
