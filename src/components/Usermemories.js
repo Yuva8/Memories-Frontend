@@ -7,7 +7,7 @@ const Usermemories = () => {
   const id = localStorage.getItem("userId");
   const sendRequest = async () => {
     const res = await axios
-      .get(`https://memoriesapp-yuvi.herokuapp.com/api/memories/user/${id}`)
+      .get(`https://memoriesapp-backend.onrender.com/api/memories/user/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
