@@ -24,7 +24,7 @@ const MemoriesDetail = () => {
 
   const fetchDetails = async () => {
     const res = await axios
-      .get(`https://memoriesapp-yuvi.herokuapp.com/api/memories/${id}`)
+      .get(`https://memoriesapp-backend.onrender.com/api/memories/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
@@ -66,11 +66,14 @@ const MemoriesDetail = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .put(`https://memoriesapp-yuvi.herokuapp.com/api/memories/update/${id}`, {
-        title: inputs.title,
-        description: inputs.description,
-        image: image,
-      })
+      .put(
+        `https://memoriesapp-backend.onrender.com/api/memories/update/${id}`,
+        {
+          title: inputs.title,
+          description: inputs.description,
+          image: image,
+        }
+      )
       .catch((err) => console.log(err));
 
     const data = await res.data;
